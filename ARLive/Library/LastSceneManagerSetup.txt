@@ -1,0 +1,5 @@
+sceneSetups:
+- path: C:/Users/0ta52/Documents/ARLive/unitychan-crs-master/Assets/Scenes/Character
+    Setup.unity
+  isLoaded: 1
+  isActive: 1
