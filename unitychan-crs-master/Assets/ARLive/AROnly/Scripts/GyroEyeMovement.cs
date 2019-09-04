@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GyroEyeMovement : MonoBehaviour
 {
+    [SerializeField] private Text GyroResult;
+
     /// <summary>
     /// 調整値
     /// </summary>
@@ -31,6 +34,8 @@ public class GyroEyeMovement : MonoBehaviour
 
         // ジャイロセンサを有効
         Input.gyro.enabled = true;
+
+        GyroResult = GameObject.Find("GyroResult").GetComponent<Text>();
     }
 
     /// <summary>
@@ -41,5 +46,7 @@ public class GyroEyeMovement : MonoBehaviour
         // ジャイロセンサからカメラの角度を設定する
         gyro = Input.gyro.attitude;
         camera.localRotation = BASE_ROTATION * (new Quaternion(-gyro.x, -gyro.y, gyro.z, gyro.w));
+
+        GyroResult.text = gyro.ToString();
     }
 }

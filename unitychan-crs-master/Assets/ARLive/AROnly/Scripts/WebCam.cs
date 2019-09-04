@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WebCam : MonoBehaviour
 {
@@ -18,10 +19,10 @@ public class WebCam : MonoBehaviour
     /// </summary>
     private int FPS = 30;
 
-    /// <summary>
-    /// Skyboxに設定するマテリアル
-    /// </summary>
-    [SerializeField] private Material material;
+    ///// <summary>
+    ///// Skyboxに設定するマテリアル
+    ///// </summary>
+    //[SerializeField] private Material material;
 
     /// <summary>
     /// Webカメラテクスチャ
@@ -55,12 +56,11 @@ public class WebCam : MonoBehaviour
             yield break;
         }
 
-        // SkyboxにWebカメラのマテリアルを設定
-        RenderSettings.skybox = material;
-        // Webカメラの画像をテクスチャとして取得
-        webCamTexture = new WebCamTexture(devices[0].name, Width, Height, FPS);
-        // 取得したテクスチャをマテリアルに設定する
-        material.mainTexture = webCamTexture;
+        webCamTexture = new WebCamTexture(Width, Height, FPS);
+
+        Renderer renderer = GetComponent<Renderer>();
+        renderer.material.mainTexture = webCamTexture;
         webCamTexture.Play();
+             
     }
 }

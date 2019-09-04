@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404fbb5524bde3444904f2666dda34f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GyroResult: {fileID: 0}
   camera: {fileID: 3941434467235461118}
 --- !u!1 &5696667964003947800
 GameObject:
