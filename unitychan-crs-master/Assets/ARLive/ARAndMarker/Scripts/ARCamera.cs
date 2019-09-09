@@ -8,21 +8,24 @@ public class ARCamera : MonoBehaviour
 
     private CameraMovement cameraMovement;
 
+    private GyroEyeMovement eyeMovement;
+
     private bool created = false;
 
     private void Start()
     {
         cameraMovement = gameObject.GetComponent<CameraMovement>();
+        eyeMovement = gameObject.GetComponentInParent<GyroEyeMovement>();
     }
 
     public void OnTrackingFound()
     {
         if (!created)
         {
-            created = true;            
+            created = true;
 
             trans.position = new Vector3(0, 1, 8);
-            trans.rotation = Quaternion.Euler(0, 0, 0);
+            trans.rotation = Quaternion.Euler(0, 90, 0);
 
             StartLiveStage();
 
@@ -34,6 +37,7 @@ public class ARCamera : MonoBehaviour
     {
         stageDirector.SetActive(true);
         cameraMovement.enabled = true;
+        eyeMovement.enabled = true;
     }
 
     public void OnTrackingLost() { }

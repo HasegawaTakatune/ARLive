@@ -7,7 +7,7 @@ public class ModeSelect : MonoBehaviour
 {
     public void OnClickARButton()
     {
-        SceneManager.LoadScene("AR");
+        SceneManager.LoadScene("AROnly");
     }
 
     public void OnClickARAndMarker()

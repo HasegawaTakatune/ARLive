@@ -16,7 +16,8 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
-
+        StartController.gameObject.SetActive(false);
+        MoveController.gameObject.SetActive(false);
     }
 
     void Update()
@@ -32,15 +33,29 @@ public class Controller : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
             BeginControll(Input.mousePosition);
+
         if (Input.GetMouseButton(0))
             MoveControll(Input.mousePosition);
+
         if (Input.GetMouseButtonUp(0))
             EndControll();
     }
 
     private void TouchControll()
     {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
 
+            if (touch.phase == TouchPhase.Began)
+                BeginControll(touch.position);
+
+            if (touch.phase == TouchPhase.Moved)
+                MoveControll(touch.position);
+
+            if (touch.phase == TouchPhase.Ended)
+                EndControll();
+        }
     }
 
     private void BeginControll(Vector3 pos)
@@ -83,13 +98,15 @@ public class Controller : MonoBehaviour
     {
         float dx = p2.x - p1.x;
         float dy = p2.y - p1.y;
-        float rad = Mathf.Atan2(dy, dx);
-        return rad * Mathf.Rad2Deg;
+        float rad = Mathf.Atan2(dx, dy);
+        float degree = rad * Mathf.Rad2Deg;
+        if (degree < 0) degree += 360;
+        return degree;
     }
 
     private void SetAngle()
     {
-        angle = GetAim(MoveController.position, startPosition) + 180;
+        angle = GetAim(MoveController.position, startPosition);
         Debug.Log(angle);
         //float x = MoveController.position.x - startPosition.x;
         //float y = MoveController.position.y - startPosition.y;

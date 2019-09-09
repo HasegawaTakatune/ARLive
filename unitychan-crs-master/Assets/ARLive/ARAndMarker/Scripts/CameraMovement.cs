@@ -25,10 +25,11 @@ public class CameraMovement : MonoBehaviour
         if (controller.Moving())
         {
             float angle = controller.GetAngle();
+            float value = (child.localEulerAngles.y + angle) * Mathf.PI / 180;
             parent.position += new Vector3(
-                Mathf.Sin((child.localEulerAngles.y + angle + 90) * Mathf.PI / 180),
+                -Mathf.Cos(value),
                 0,
-                -Mathf.Cos((child.localEulerAngles.y + angle + 90) * Mathf.PI / 180)) * speed;
+                Mathf.Sin(value)) * speed;
 
             //Debug.Log(child.localEulerAngles.y);
         }
