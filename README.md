@@ -22,7 +22,7 @@
 - マップ作製参考  
 [Unityでサブカメラを作り、別視点で小窓に表示する](https://gametukurikata.com/camera/smallwindowcamera)  
 
-- 2点間の角度参考
+- 2点間の角度参考  
 [【Unity】Mathf.Atan2で取得する角度を上向き0度スタートで時計回りにする【2D】](https://t-stove-k.hatenablog.com/entry/2018/08/28/164549)  
 
 ## 環境
